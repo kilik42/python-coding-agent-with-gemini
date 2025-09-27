@@ -2,7 +2,7 @@ import os
 import sys
 from dotenv import load_dotenv
 from google import genai
-
+from google.genai import types # Import types if needed for advanced usage
 def main():
     
 
@@ -11,11 +11,19 @@ def main():
 
     client = genai.Client(api_key=api_key)
 
+    # Ensure a prompt is provided on the command line
     if len(sys.argv) < 2:
         print("i need a prompt")
-        
-    prompt = sys.argv[1] if len(sys.argv) > 1 else "Hello, world!"
 
+    # Get the prompt from the command line arguments or use a default value if none is provided
+    prompt = sys.argv[1] if len(sys.argv) > 1 else "Hello, world!"
+    
+    messages = [
+        types.Content(role="user", parts=[types.Part(text=prompt)])
+    ]
+
+
+    
 
     response = client.models.generate_content(
         ##free tier model

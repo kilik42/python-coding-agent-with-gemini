@@ -15,3 +15,5 @@ response = client.models.generate_content(
     contents='Why is the sky blue?'
 )
 print(response.text)
+print(f"prompt_tokens: {response.usage_metadata.prompt_token_count}, ")
+print(f"response_tokens: {response.usage_metadata.candidates_token_count}, ")

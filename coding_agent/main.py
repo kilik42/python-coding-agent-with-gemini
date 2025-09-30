@@ -20,7 +20,7 @@ def main():
         verpose_flag = True
         sys.exit(1)
     # prompt = sys.argv[1]
-    v
+    
 
     # Get the prompt from the command line arguments or use a default value if none is provided
     prompt = sys.argv[1] if len(sys.argv) > 1 else "Hello, world!"
@@ -38,9 +38,11 @@ def main():
     print(response.text)
     if response is None or response.usage_metadata is None:
         print("No usage metadata available.")
-    else:
-        print(f"prompt_tokens: {response.usage_metadata.prompt_token_count}, ")
-        print(f"response_tokens: {response.usage_metadata.candidates_token_count}, ")
+    if verpose_flag:
+        print(f"Response Text: {response.text}")
+        print(f"Usage Metadata: {response.usage_metadata}")
+        print(f"Full Response: {response.userage_metadata.prompt_tokens}, {response.usage_metadata.completion_tokens}, {response.usage_metadata.total_tokens}")
+        print(response.usage_metadata)
 
 if __name__ == "__main__":
     main()

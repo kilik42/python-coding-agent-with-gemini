@@ -14,6 +14,13 @@ def main():
     # Ensure a prompt is provided on the command line
     if len(sys.argv) < 2:
         print("i need a prompt")
+    verpose_flag = False
+    if len(sys.argv) == 3 and sys.argv[2] == "--verpose":
+        print("i need a prompt")
+        verpose_flag = True
+        sys.exit(1)
+    # prompt = sys.argv[1]
+    v
 
     # Get the prompt from the command line arguments or use a default value if none is provided
     prompt = sys.argv[1] if len(sys.argv) > 1 else "Hello, world!"

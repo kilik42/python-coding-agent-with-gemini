@@ -3,8 +3,8 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types # Import types if needed for advanced usage
+
 def main():
-    
 
     load_dotenv()  # Load environment variables from a .env file if present
     api_key = os.environ.get("GEMINI_API_KEY")
@@ -22,8 +22,6 @@ def main():
         types.Content(role="user", parts=[types.Part(text=prompt)])
     ]
 
-
-    
 
     response = client.models.generate_content(
         ##free tier model
